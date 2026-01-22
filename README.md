@@ -7,11 +7,14 @@ Using https://stackedit.io/ for Markdown editing.
 
 ## Structure of the Project
 > README.md
->lab01
->>lab01_files
+>
+> lab01
+>>Lab1-...
+>>Readme.md
 >
 >lab02
->>lab02_files
+>>Lab2-...
+>>Readme.md
 
 ...
 
