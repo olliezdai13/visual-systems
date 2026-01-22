@@ -203,3 +203,5 @@ Finally, map the RGB image to the XYZ colour space with the **rgb2xyz( )** funct
 >
 >You can see a graphical representation of this color space below:
 <p align="center"> <img src="./Lab2-Colour-Perception-main/assets/CIE1931xyz.svg" style="background-color: white;" /> </p><BR>
+
+> This color space was developed to select a decent range of colors within the perceivable color space to make math easy

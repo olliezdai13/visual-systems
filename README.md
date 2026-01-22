@@ -10,11 +10,13 @@ Using https://stackedit.io/ for Markdown editing.
 >
 > lab01
 >>Lab1-...
->>Readme.md
+>>
+>>logbook.md
 >
 >lab02
 >>Lab2-...
->>Readme.md
+>>
+>>logbook.md
 
 ...
 
@@ -22,4 +24,5 @@ Using https://stackedit.io/ for Markdown editing.
 >>labN_files
 >
 
-
+## Logbook Info
+I copy the lab readme and write my answers and observations in that file.
