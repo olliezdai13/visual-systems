@@ -195,7 +195,15 @@ To test function *_bwmorph_* on thinning operation, do the following:
 
 What will happen if you keep thinning the image?  Try thinning with *_n = inf_*.  (_inf_ is reserved word in Matlab which means infinity.  However, for _bwmorph_, it means repeat the function until the image stop changing.)
 
+<p align="center"> <img src="./Lab4-Morphology-main/assets/Figure_8.png" /> </p>
+
+>Thinning repeatedly slowly reduces all white regions until every line is minimally thin (that is, 1px wide for the most part, with the only exception being T intersections and such)
+
 Modify your matlab code so that the fingerprint is displayed black lines on white background instead of white on black.  What conclusion can you draw about the relationship between thinning and thickening?
+
+<p align="center"> <img src="./Lab4-Morphology-main/assets/Figure_9.png" /> </p>
+
+>Inverting the thinned image makes it evident that thinning the original is the same as thickening the complement, then inverting the result. In other words, thinning and thickening are dual operations. Thinning the white space is the same as thickening the black space, and vice versa.
 
 ## Task 5 - Connected Components and labels
 
@@ -215,7 +223,7 @@ CC = bwconncomp(t)
 
 *_CC_* is a data structure returned by *_bwconncomp_* as described below.
 
-<p align="center"> <img src="assets/cc.jpg" /> </p>
+<p align="center"> <img src="./Lab4-Morphology-main/assets/cc.jpg" /> </p>
 
 To determine which is the largest component in the image and then erase it (i.e. set all pixels within that componenet to 0), do this:
 
@@ -237,6 +245,11 @@ These few lines of code introduce you to some cool features in Matlab.
 4. The **_max_** function returns the maximum value in numPixels and its index in the array.
 
 5. Once this index is found, we have identified the largest connect component.  Using this index information, we can retrieve the list of pixel coordinates for this component in **_CC.PixelIdxList_**.
+
+<p align="center"> <img src="./Lab4-Morphology-main/assets/Figure_10.png" /> </p>
+
+>The double "ff" disappears. This makes sense that two fused characters would the be largest. It had 106 pixels in it.
+
 
 ## Task 6 - Morphological Reconstruction
 

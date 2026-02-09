@@ -119,17 +119,4 @@ montage({g1, g2, g3, g4, g5, gInf}, 'Size', [2, 3]);
 
 gInverted = imcomplement(gInf);
 
-montage({BW, imcomplement(BW), gInf, gInverted}, 'Size', [2, 2]);
-
-%% Task 5
-t = imread('../assets/text.png');
-f = t;
-imshow(t);
-CC = bwconncomp(t);
-
-numPixels = cellfun(@numel, CC.PixelIdxList);
-[biggest, idx] = max(numPixels);
-CC.PixelIdxList{idx}
-t(CC.PixelIdxList{idx}) = 0;
-
-montage({f,t}, 'Size', [1, 2]);
+montage({g1, g2, g3, g4, g5, gInf}, 'Size', [2, ]);
