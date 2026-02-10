@@ -331,4 +331,16 @@ Now that you are familiar with the Matlab functions _fspecial_ and _imfilter_, e
 
 * Use the Sobel filter in combination with any other techniques, find the edge of the circles in the image file _circles.tif_.  You are encouraged to discuss and work with your classmates and compare results.
 
+>**OLIVER'S NOTES** Below is the original circles.tif image
+
+<p align="center"> 
+    <img src="./Lab3-Intensity-transformation-main/matlab/Figure_13.png" />
+</p>
+
+>Consider the histogram
+
+<p align="center"> 
+    <img src="./Lab3-Intensity-transformation-main/matlab/Figure_14.png" />
+</p>
+
 * _office.jpg_ is a colour photograph taken of an office with badd exposure.  Use whatever means at your disposal to improve the lighting and colour of this photo.

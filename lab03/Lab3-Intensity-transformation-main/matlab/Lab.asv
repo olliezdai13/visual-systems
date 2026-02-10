@@ -170,14 +170,11 @@ f_thresholded(f_thresholded < 25) = background_val;
 
 f_med = medfilt2(f_thresholded, [4,4]);
 
-f_sobel = imfilter(f_med, fspecial('sobel'));
-montage({f_med,f_sobel})
-
 % % Blur out the pen outline
 % f_gauss = imfilter(f_thresholded, fspecial('Gaussian', [2 2], 1.0));
 % imshow(f_gauss)
 
-
+f_sobel = imfilter(f_med, fspecial('sobel'));
 % montage({f, f_gauss, f_sobel});
 % % imhist(f);      % calculate and plot the histogram
 % imshow(f)
