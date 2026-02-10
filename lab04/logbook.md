@@ -280,6 +280,13 @@ montage({f, g, fo, fr}, "size", [2 2])
 
 Comment on what you observe from these four images.
 
+<p align="center"> <img src="./Lab4-Morphology-main/assets/Figure_11.png" /> </p>
+
+>This is what seems to be happening: Displaying only letters with straight tall segments (17 pixels high).
+>
+>First, we erode by the tall array, keeping only pixels in the middle of tall segments. 'fo' is just there to demonstrate where the 'segments' I'm speaking of exist in the image. Then, we use morphological reconstruction to 'grow' the markers back into their existing character. This is done using repeated geodesic dilation on the markers using the original text as a mask.
+
+
 Also try the function **_imfill_**, which will fill the holes in an image (Lecture 6 slides 19-21).
 
 ```
@@ -287,6 +294,10 @@ ff = imfill(f);
 figure
 montage({f, ff})
 ```
+
+<p align="center"> <img src="./Lab4-Morphology-main/assets/Figure_12.png" /> </p>
+
+>Filled all the holes! Nice
 
 ## Task 7 - Morphological Operations on Grayscale images
 
@@ -307,11 +318,35 @@ montage({f, gd, ge, gg}, 'size', [2 2])
 ```
 Comments on the results.
 
+<p align="center"> <img src="./Lab4-Morphology-main/assets/Figure_13.png" /> </p>
+
+>The eroded version has more white, and even more light-gray (some of the light strands are wider). The dilated version has more black, and darker spots have grown larger. Again, subtracting these results in a kind of edge detection, exposing spots with rapid changes. 
+>
+>Upon further research, it seems that in greyscale erosion, the output value of a pixel is the minimum value found in the structuring element around it.
+
 ## Challenges
 
 You may like to attemp one or more of the following challenges. Unlike tasks in this Lab where you were guided with clear instructions, you are required to find your solutions yourself based on what you have learned so far.  
 
 1. The grayscale image file _'assets/fillings.tif'_ is a dental X-ray corrupted by noise.  Find how many fills this patient has and their sizes in number of pixels.
+
+>Approach: Median filter to remove noise, fixed-value thresholding to find the fillings, bwconncomp to find data on the connected components (count, size)
+>
+>starting with Noise Removal:
+<p align="center"> <img src="./Lab4-Morphology-main/assets/Figure_15.png" /> </p>
+
+>Then trying various threshold values (90% was a winner, with no artifacts but not too much loss of the filling shape)
+
+<p align="center"> <img src="./Lab4-Morphology-main/assets/Figure_14.png" /> </p>
+
+>Then finally counting the connected components and their size:
+```
+numPixels =
+
+       11795        7331
+```
+
+>The final result: two fillings, one of size ~11795 pixels, another of size ~7331 pixels.
 
 2. The file _'assets/palm.tif'_ is a palm print image in grayscale. Produce an output image that contains the main lines without all the underlining non-characteristic lines.
 

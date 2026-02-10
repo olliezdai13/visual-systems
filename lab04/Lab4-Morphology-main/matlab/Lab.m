@@ -133,3 +133,43 @@ CC.PixelIdxList{idx}
 t(CC.PixelIdxList{idx}) = 0;
 
 montage({f,t}, 'Size', [1, 2]);
+
+%% Task 6
+clear all
+close all
+f = imread('../assets/text_bw.tif');
+se = ones(17,1);
+g = imerode(f, se);
+fo = imopen(f, se);     % perform open to compare
+fr = imreconstruct(g, f);
+montage({f, g, fo, fr}, "size", [2 2])
+%%
+ff = imfill(f);
+figure
+montage({f, ff})
+
+%% Task 7
+clear all; close all;
+f = imread('../assets/headCT.tif');
+se = strel('square',3);
+gd = imdilate(f, se);
+ge = imerode(f, se);
+gg = gd - ge;
+montage({f, gd, ge, gg}, 'size', [2 2])
+
+%% Challenge 1
+clear all; close all;
+f = imread('../assets/fillings.tif');
+f_denoised = medfilt2(f, [5 5]);
+BW1 = im2bw(f_denoised,0.9); % WINNER
+BW2 = im2bw(f_denoised,0.8);
+BW3 = im2bw(f_denoised,0.95);
+
+% montage({f, f_denoised}, Size=[1 2]);
+% montage({BW2, BW1, BW3}, 'size', [1 3])
+
+CC = bwconncomp(BW1);
+
+numPixels = cellfun(@numel, CC.PixelIdxList)
+
+%%
