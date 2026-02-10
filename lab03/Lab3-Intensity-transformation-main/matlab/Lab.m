@@ -200,3 +200,44 @@ montage({f_fused,f_ff,f_thresholded_2}, Size=[1,3]);
 % imshow(f_unsharp)
 
 %% Challenge 3
+
+clear all
+close all
+
+f = imread('../assets/office.jpg');
+f2 = histeq(f,256);
+
+f_g = imfilter(f2, fspecial('gaussian', 5, 1.0));
+f_u = imfilter(f_g, fspecial('unsharp', 0.2));
+
+montage({f, f2, f_g, f_u})
+
+R = f_u(:,:,1);
+G = f_u(:,:,2);
+B = f_u(:,:,3);
+
+figure; % Opens a new figure window
+
+% Red Channel Histogram
+subplot(1, 3, 1); 
+imhist(R);
+title('Red Channel');
+
+% Green Channel Histogram
+subplot(1, 3, 2); 
+imhist(G);
+title('Green Channel');
+
+% Blue Channel Histogram
+subplot(1, 3, 3); 
+imhist(B);
+title('Blue Channel');
+
+% montage({R,G,B}, Size=[1,3])
+
+windowSize = [5 5];
+R_clean = imfilter(R, fspecial('average', 5)); % medfilt2(R, windowSize);
+B_clean = imfilter(B, fspecial('average', 5)); % medfilt2(R, windowSize);
+f_clean = cat(3, R_clean, G, B_clean);
+
+% montage({R_clean, R})

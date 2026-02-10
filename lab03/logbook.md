@@ -376,4 +376,27 @@ Now that you are familiar with the Matlab functions _fspecial_ and _imfilter_, e
 >I wasn't able to remove the pen, unfortunately. Also, edges of circles that are nearly the same color as the background don't get detected. Morphological operations could possibly help in the future by performing filtering that preserves shape / searches for circles.
 
 
-* _office.jpg_ is a colour photograph taken of an office with badd exposure.  Use whatever means at your disposal to improve the lighting and colour of this photo.
+* _office.jpg_ is a colour photograph taken of an office with bad exposure.  Use whatever means at your disposal to improve the lighting and colour of this photo.
+
+>1. Original
+>2. Contrast stretched
+>3. Gaussian filter
+>4. Unsharp
+
+<p align="center"> 
+    <img src="./Lab3-Intensity-transformation-main/matlab/Figure_21.png" />
+</p>
+
+> Tried splitting out the R, G, and B channels. Turns out most of the rectangular color splotches are only present in the red and blue channels. Not sure how to get them out though.
+
+<p align="center"> 
+    <img src="./Lab3-Intensity-transformation-main/matlab/Figure_20.png" />
+</p>
+
+>Tried analyzing the RGB histograms. I see nothing particularly out of ordinary except a tremendous amount of "17"s in every channel... This turns out to just be the black chair after filtering.
+
+<p align="center"> 
+    <img src="./Lab3-Intensity-transformation-main/matlab/Figure_22.png" />
+</p>
+
+>I'm disappointed to say that I failed to make the image truly "better"... I just made it brighter but also made the color errors more evident, which you could argue made the image worse. I'm curious to see what my peers' approaches were to see if they found any better solutions.
