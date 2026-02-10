@@ -343,4 +343,37 @@ Now that you are familiar with the Matlab functions _fspecial_ and _imfilter_, e
     <img src="./Lab3-Intensity-transformation-main/matlab/Figure_14.png" />
 </p>
 
+>Stretch contrast using imadjust
+
+<p align="center"> 
+    <img src="./Lab3-Intensity-transformation-main/matlab/Figure_15.png" />
+</p>
+
+>Below we have:
+>1. Base image
+>2. contrast stretched 
+>3. Threshold out darkest blacks, setting them to the mean color. 
+>4. Median filter. 
+>
+>To be honest, I'm not sure that thresholding helped as I wasn't able to remove the black shadow or blurred edges of the pen using this method, and there was one blob of dark pixels in the middle. I'm also not sure median filtering helped. I meant for this to remove some of the background definition, which it did to limited effect. Too much median filter had the circles forming blobs with each other.
+
+<p align="center"> 
+    <img src="./Lab3-Intensity-transformation-main/matlab/Figure_17.png" />
+</p>
+
+>Next I applied sobel 4 times, with the kernel rotated by 90 degrees each time. This detects edges on both horizontal and vertical axes, in either direction.
+
+<p align="center"> 
+    <img src="./Lab3-Intensity-transformation-main/matlab/Figure_18.png" />
+</p>
+
+>Finally, I fuse the four sobel directions together with pixel addition, use a gaussian filter to fade out bright spots in the background, and then threshold out any pixels not bright enough (keeping only values higher than 100 out of 255)
+
+<p align="center"> 
+    <img src="./Lab3-Intensity-transformation-main/matlab/Figure_19.png" />
+</p>
+
+>I wasn't able to remove the pen, unfortunately. Also, edges of circles that are nearly the same color as the background don't get detected. Morphological operations could possibly help in the future by performing filtering that preserves shape / searches for circles.
+
+
 * _office.jpg_ is a colour photograph taken of an office with badd exposure.  Use whatever means at your disposal to improve the lighting and colour of this photo.

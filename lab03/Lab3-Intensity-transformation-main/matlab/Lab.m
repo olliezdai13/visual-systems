@@ -159,26 +159,44 @@ f = imread('../assets/circles.tif');
 
 f_adjust = imadjust(f);
 
-montage({f, f_adjust})
-
-imhist(f_adjust);      % calculate and plot the histogram
+% imhist(f_adjust);      % calculate and plot the histogram
 
 % Threshold out the dark black
-f_thresholded = f_adjust
+f_thresholded = f_adjust;
 background_val = median(f_thresholded(:));
 f_thresholded(f_thresholded < 25) = background_val;
 
 f_med = medfilt2(f_thresholded, [4,4]);
 
-f_sobel = imfilter(f_med, fspecial('sobel'));
-montage({f_med,f_sobel})
+% montage({f, f_adjust, f_thresholded, f_med});
 
-% % Blur out the pen outline
-% f_gauss = imfilter(f_thresholded, fspecial('Gaussian', [2 2], 1.0));
+h_sobel_1 = fspecial('sobel');
+h_sobel_2 = flipud(h_sobel_1);
+h_sobel_3 = rot90(h_sobel_1);
+h_sobel_4 = rot90(h_sobel_1, -1);
+f_sobel_1 = imfilter(f_med, h_sobel_1);
+f_sobel_2 = imfilter(f_med, h_sobel_2);
+f_sobel_3 = imfilter(f_med, h_sobel_3);
+f_sobel_4 = imfilter(f_med, h_sobel_4);
+% montage({f_med,f_sobel_1,f_sobel_2,f_med,f_sobel_3,f_sobel_4}, Size=[2,3])
+
+f_fused = abs(f_sobel_1) + abs(f_sobel_2) + abs(f_sobel_3) + abs(f_sobel_4);
+
+% imshow(f_fused);
+
+f_ff = medfilt2(f_fused, [4,4]);
+
+% Threshold out the non-white
+f_thresholded_2 = f_ff;
+f_thresholded_2(f_thresholded_2 < 100) = 0;
+% imshow(f_thresholded_2);
+montage({f_fused,f_ff,f_thresholded_2}, Size=[1,3]);
+
+
+% f_gauss = imfilter(f_ff, fspecial('Gaussian', [2 2], 1.0));
 % imshow(f_gauss)
+% 
+% f_unsharp = imfilter(f_gauss, fspecial('unsharp', 0.5));
+% imshow(f_unsharp)
 
-
-% montage({f, f_gauss, f_sobel});
-% % imhist(f);      % calculate and plot the histogram
-% imshow(f)
-% f_gauss = imfilter(f, fspecial('Gaussian', [7 7], 1.0));
+%% Challenge 3
