@@ -243,34 +243,8 @@ af3 = imerode(af2, se2);
 af4 = imerode(af3, se2);
 
 % print with no background
-fx = logical(g2) & ~logical(imcomplement(af4));
+fx = g2 - imcomplement(af4);
 
-se3 = strel('disk', 5);
+fy = 
 
-fy = imopen(fx, se);
-fy2 = imopen(fy, se);
-
-fy3 = bwareaopen(fy2, 200);
-
-montage({f2, f3, f4, f5, b2,b3,b4,b5, g2, a5, af4, fx, fy, fy2, fy3}, Size=[4,4])
-
-%% Challenge 3
-
-clear all; close all;
-f = imread('../assets/normal-blood.png');
-
-f = imcomplement(f);
-gray = im2gray(f);
-level = graythresh(gray);
-bw = imbinarize(gray, level);
-
-se = strel('disk', 4);
-erode = imerode(bw, se);
-fill = imfill(erode, "holes");
-erode2 = imerode(fill, se);
-fill2 = imfill(erode2, "holes");
-
-CC = bwconncomp(fill2);
-count = CC.NumObjects
-
-montage({f, bw, erode, fill, erode2, fill2}, Size=[3,2])
+montage({f2, f3, f4, f5, b2,b3,b4,b5, g2, af, af2, fx}, Size=[3,4])

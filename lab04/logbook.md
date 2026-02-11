@@ -350,7 +350,38 @@ numPixels =
 
 2. The file _'assets/palm.tif'_ is a palm print image in grayscale. Produce an output image that contains the main lines without all the underlining non-characteristic lines.
 
+> Below is my attempt, showing various snapshots of the palm print undergoing transformation.
+
+<p align="center"> <img src="./Lab4-Morphology-main/assets/Figure_16.png" /> </p>
+
+>Explanation:
+>
+>1st row
+>>exploring 'erode', followed by 3 'open' operations
+>
+>2nd row
+>>binarizing the 1st photo from row 1 at 2 different levels. binarizing the 3rd photo from row 1 at 2 different levels.
+>
+>3rd row
+>>selected the 1st image of row 2. Filled its complement to reduce holes, and re-inverted it. Eroded several times to get a solid black area where the palm is. Inverted that and filled holes in the white palm area. Subtracted the white mask from the 1st row 3 image.
+>
+>4th row
+>>using 'open' and 'bwareaopen' to clean up non-characteristic lines and pixels.
+
+>I'm very curious to see how others did this. My approach was roundabout with lots of experimentation. I'd love to see a neat solution that does it more efficiently, and to a higher quality.
+
 3. The file _'assets/normal-blood.png'_ is a microscope image of red blood cells. Using various techniques you have learned, write a Matlab .m script to count the number of red blood cells.
+
+> Below is my attempt at Challenge 3:
+>
+> The final number I arrived at is ~42 blood cells. From roughly hand-counting, that is roughly correct. Some blood cells were never separated so the actual number should be a bit higher.
+
+<p align="center"> <img src="./Lab4-Morphology-main/assets/Figure_17.png" /> </p>
+
+>I inverted the image, binarized it, and used a few rounds of erode + fill to separate cells connected by small bridges, while filling their holes to prevent eroding a cell wall into two disconnected components.
+>
+>I counted the final total using `bwconncomp` and looking at the result's `NumObjects` property.
+
 
 ---
 ## DRAW Week Assessment

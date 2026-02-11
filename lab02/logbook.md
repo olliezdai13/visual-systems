@@ -13,7 +13,7 @@ Clone this repo to your laptop and do all your work using your local copy.
 
 Play the video [here](http://www.ee.ic.ac.uk/pcheung/teaching/DE4_DVS/assets/blind_spot_test.mp4) and follow its instructions.  Make notes on what you found out.
 
-<video src="assets/blind_spot_test.mp4" width="480" height="360" controls></video>
+<video src="./Lab2-Colour-Perception-main/assets/blind_spot_test.mp4" width="480" height="360" controls></video>
 
 Really cool. I found it very easy to find my blind spot (I've been doing it my whole life)
 
@@ -34,7 +34,7 @@ Yep, no colorblindness here.
 
 You should see the American flag in the normal red, white and blue colours.
 
-<p align="center"> <img src="assets/american_flag.jpg" /> </p><BR>
+<p align="center"> <img src="./Lab2-Colour-Perception-main/assets/american_flag.jpg" /> </p><BR>
 
 Explain the reasons why this happens.
 
@@ -46,7 +46,7 @@ Explain the reasons why this happens.
 
 Here is another example to demonstrate the Opponent Process Theory.  Play the video [here](http://www.ee.ic.ac.uk/pcheung/teaching/DE4_DVS/assets/purple_dots.mp4) and follow the instruction.  
 
-<video src="assets/purple_dots.mp4" width="640" height="320" controls></video>
+<video src="./Lab2-Colour-Perception-main/assets/purple_dots.mp4" width="640" height="320" controls></video>
 
 Write down in your logbook the reason of what you see.  Read the wikipedia page on Troxler's fading [here](https://en.wikipedia.org/wiki/Troxler%27s_fading), which explains this phenomenon and relates it to the human visual system.
 
@@ -54,7 +54,7 @@ Write down in your logbook the reason of what you see.  Read the wikipedia page 
 
 [Here](http://www.ee.ic.ac.uk/pcheung/teaching/DE4_DVS/assets/blue_circle.mp4) is another experiment to test the phenomenon.  Play the video and comment.
 
-<video src="assets/blue_circle.mp4" width="640" height="320" controls></video>
+<video src="./Lab2-Colour-Perception-main/assets/blue_circle.mp4" width="640" height="320" controls></video>
 
 > Oh interesting. I originally thought this effect was simply the result of neural adaptation. But this video also pointed out that our brain tends to interpolate data and may simply be "tricked" into thinking the majority white of the screen is unbroken by color. So this is not only a phenomenon in our light receptors (cones and rods) but also perhaps in our visual cortex or further down in our cognitive processes.
 
@@ -62,14 +62,14 @@ Write down in your logbook the reason of what you see.  Read the wikipedia page 
 
 Our brain interprets what we see based on our expectation.  Here is an example.  The image below shows two tables with blue and red tops.  Which is the longer table?  Measure this on the screen with a ruler (or just marking on a sheet of paper).  Write in your logbook the reason for this phenomenon.
 
-<p align="center"> <img src="assets/table.jpg" /> </p><BR>
+<p align="center"> <img src="./Lab2-Colour-Perception-main/assets/table.jpg" /> </p><BR>
 
 > They're the same length! that is: w(red) === h(blue). It seems this is just an illusion based on our expectations from what we see. The left table is "longer" relatively.
 
 
 Here is another example, where our brain see what it expects instead of what hits the retina.  Which square is darker, the one labelled A or B?  Why?
 
-<p align="center"> <img src="assets/shadow.jpg" /> </p><BR>
+<p align="center"> <img src="./Lab2-Colour-Perception-main/assets/shadow.jpg" /> </p><BR>
 
 To verify the result, you need to use an image editor app and cut out one square and put it next to the other for comparison.
 
@@ -79,17 +79,17 @@ To verify the result, you need to use an image editor app and cut out one square
 
 When you stare at the centre of the grid below, you should see black dots at the intersection appearing and disappearing.  You can read more about it [here](https://en.wikipedia.org/wiki/Grid_illusion).
 
-<p align="center"> <img src="assets/grid.jpg" /> </p><BR>
+<p align="center"> <img src="./Lab2-Colour-Perception-main/assets/grid.jpg" /> </p><BR>
 
 ### Task 7 - Cafe Wall Illusion
 
 Do you see the following brick wall layers are parallel?  Then measure the boundaries of each layer with a ruler.
 
-<p align="center"> <img src="assets/bricks.jpg" /> </p><BR>
+<p align="center"> <img src="./Lab2-Colour-Perception-main/assets/bricks.jpg" /> </p><BR>
 
 This phenomenon is not observed for the following image when the contrast is lower.
 
-<p align="center"> <img src="assets/cbricks.jpg" /> </p><BR>
+<p align="center"> <img src="./Lab2-Colour-Perception-main/assets/cbricks.jpg" /> </p><BR>
 
 You can find out more about this [here](https://en.wikipedia.org/wiki/Café_wall_illusion).
 
@@ -98,7 +98,7 @@ You can find out more about this [here](https://en.wikipedia.org/wiki/Café_wall
 
 [Here](http://www.ee.ic.ac.uk/pcheung/teaching/DE4_DVS/assets/dancer.m4v) is video of a spinning dancer.  Play the video and looking at it for some time, you may find that the dance would suddenly spinning in the opposite direction.  The explanation for this phenomenon can be found [here](https://en.wikipedia.org/wiki/Spinning_dancer).
 
-<video src="assets/dancer.m4v" width="640" height="640" controls></video>
+<video src="./Lab2-Colour-Perception-main/assets/dancer.m4v" width="640" height="640" controls></video>
 
 > Nice
 
@@ -106,7 +106,7 @@ You can find out more about this [here](https://en.wikipedia.org/wiki/Café_wall
 
 The last task in part 1 is to consider the picture below.  How many triangles are in the picture?  What conclusions can you draw from this observation?
 
-<p align="center"> <img src="assets/triangle.jpg" /> </p><BR>
+<p align="center"> <img src="./Lab2-Colour-Perception-main/assets/triangle.jpg" /> </p><BR>
 
 > It looks like 2 triangles, even though really I can see that there are 0 explicit, real triangles. My interpretation of this is that: the brain extrapolates HARD from given visual stimuli. It can interpolate data between missing sections, perceive negative space as real objects, and more... What we see really is not what necessarily exists.
 
@@ -120,7 +120,7 @@ In the second part of Lab 2, you will import a full colour image from a file and
 
 Although full colour images contain more information than grayscale images, we often find that they contain too much information and require unnecessary calculations. Instead it may be better to turn the colour image into a grayscale image before we perform various processing such as feature extraction.
 
-Run Matlab and navigate the current working folder to the matlab folder of Lab 2.  (You do this with the icon ![Alt text](assets/cwf_icon.jpg) at the top left of the Matlab window).  The photo **peppers.png** is already stored in this folder.  Find out information about this photo file with **imfinfo( )**:
+Run Matlab and navigate the current working folder to the matlab folder of Lab 2.  (You do this with the icon ![Alt text](./Lab2-Colour-Perception-main/assets/cwf_icon.jpg) at the top left of the Matlab window).  The photo **peppers.png** is already stored in this folder.  Find out information about this photo file with **imfinfo( )**:
 ```
 imfinfo('peppers.png')
 ```
@@ -140,7 +140,7 @@ In this task, we will convert the RGB image into a grayscale image. The formula 
 
 In matrix form, it is:
 
-<p align="center"> <img src="assets/grayscale_eq.jpg" /> </p>
+<p align="center"> <img src="./Lab2-Colour-Perception-main/assets/grayscale_eq.jpg" /> </p>
 
 The function **rgb2gray( )** converts RGB values to grayscale values by forming a weighted sum of the R, G, and B components according to the equation above. 
 
