@@ -91,3 +91,58 @@ hold off;
  matchedPoints2 = valid_points2(indexPairs(:,2),:);
  figure(3);
  showMatchedFeatures(f1,f2,matchedPoints1,matchedPoints2);
+
+%% Task 5
+
+clear all;
+close all;
+
+I1 = imread('../assets/traffic_1.jpg');
+I2 = imread('../assets/traffic_2.jpg');
+gray1 = rgb2gray(I1);
+gray2 = rgb2gray(I2);
+
+% SIFT
+points1_sift = detectSIFTFeatures(gray1);
+points2_sift = detectSIFTFeatures(gray2);
+Nbest = 200;
+bestFeatures1 = points1_sift.selectStrongest(Nbest);
+bestFeatures2 = points2_sift.selectStrongest(Nbest);
+[features1_sift, validPoints1_sift] = extractFeatures(gray1, bestFeatures1);
+[features2_sift, validPoints2_sift] = extractFeatures(gray2, points2_sift);
+indexPairs_sift = matchFeatures(features1_sift, features2_sift);
+matchedPoints1_sift = validPoints1_sift(indexPairs_sift(:, 1));
+matchedPoints2_sift = validPoints2_sift(indexPairs_sift(:, 2));
+
+% SIFT results
+figure;
+showMatchedFeatures(I1, I2, matchedPoints1_sift, matchedPoints2_sift);
+title('SIFT Feature Matching');
+
+% SURF
+points1_surf = detectSURFFeatures(gray1);
+points2_surf = detectSURFFeatures(gray2);
+[features1_surf, validPoints1_surf] = extractFeatures(gray1, points1_surf);
+[features2_surf, validPoints2_surf] = extractFeatures(gray2, points2_surf);
+indexPairs_surf = matchFeatures(features1_surf, features2_surf);
+matchedPoints1_surf = validPoints1_surf(indexPairs_surf(:, 1));
+matchedPoints2_surf = validPoints2_surf(indexPairs_surf(:, 2));
+
+% SURF results
+figure;
+showMatchedFeatures(I1, I2, matchedPoints1_surf, matchedPoints2_surf);
+title('SURF Feature Matching');
+
+%% Task 6
+
+camera = webcam;                            % create camera object for webcam
+net = googlenet;                               % change this for other networks
+inputSize = net.Layers(1).InputSize(1:2);   % find neural network input size
+figure 
+I = snapshot(camera);      
+image(I);
+f = imresize(I, inputSize);                 % resize image to match network
+tic;                                        % mark start time
+[label, score] = classify(net,f);           % classify f with neural network net
+toc                                         % report elapsed time
+title({char(label), num2str(max(score),2)}); % label object

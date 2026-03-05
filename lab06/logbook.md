@@ -196,6 +196,11 @@ Let us now try to match two images from a video sequence of motorway traffic wti
 
 What you have just done is to apply SIFT and SURF feature detection to perform object tracking between successive frames in a video.
 
+<p align="center"> <img src="./Lab6-Classification-main/matlab/Figure_11.png" /> </p>
+
+<p align="center"> <img src="./Lab6-Classification-main/matlab/Figure_12.png" /> </p>
+
+> Result: SIFT tracks a few features like license places OK... SURF does an amazing job and successfully tracked each car with several matched features.
 
 ## Task 6: Image recognition using neural networks
 
@@ -228,3 +233,31 @@ You may also want to read and explore these online documents that accompany Matl
 [Deep learning in Matlab](https://uk.mathworks.com/help/deeplearning/ug/deep-learning-in-matlab.html)
 
 [Pretrained CNN](https://uk.mathworks.com/help/deeplearning/ug/pretrained-convolutional-neural-networks.html)
+
+
+>Using the GoogleNet model
+
+<p align="center"> <img src="./Lab6-Classification-main/matlab/Figure_13.png" /> </p>
+
+> Trying to capture my phone. It thinks it's a: switch, projector, trimaran
+
+<p align="center"> <img src="./Lab6-Classification-main/matlab/Figure_14.png" /> </p>
+
+> Trying to capture a comb. It thinks it's a: wall clock, screwdriver, ...
+> 
+> Time elapsed using GoogleNet:
+```Elapsed time is 1.013154 seconds.
+Elapsed time is 0.296327 seconds.
+Elapsed time is 0.206270 seconds.
+Elapsed time is 0.179671 seconds.
+Elapsed time is 0.159782 seconds.
+Elapsed time is 0.216063 seconds.
+Elapsed time is 0.158093 seconds.
+Elapsed time is 0.188399 seconds.
+```
+
+> Switching to AlexNet...
+
+<p align="center"> <img src="./Lab6-Classification-main/matlab/Figure_15.png" /> </p>
+
+> It's a nail apparently... And the elapsed time doesn't seem to change much between networks. Interesting.
