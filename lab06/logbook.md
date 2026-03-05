@@ -261,3 +261,13 @@ Elapsed time is 0.188399 seconds.
 <p align="center"> <img src="./Lab6-Classification-main/matlab/Figure_15.png" /> </p>
 
 > It's a nail apparently... And the elapsed time doesn't seem to change much between networks. Interesting.
+> I just had to catalogue some of my various other attempts...
+
+
+<p align="center"> <img src="./Lab6-Classification-main/matlab/Figure_16.png" /> </p>
+
+<p align="center"> <img src="./Lab6-Classification-main/matlab/Figure_17.png" /> </p>
+
+<p align="center"> <img src="./Lab6-Classification-main/matlab/Figure_18.png" /> </p>
+
+> I was so desperate to get a correct response I just tried everyone in the classes' bottles... No luck :(
