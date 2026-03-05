@@ -1,0 +1,50 @@
+% Task 1
+clear all; 
+close all;
+f = imread('../assets/cafe_van_gogh.jpg');
+s1 = f(1:2:end,1:2:end,:);
+s2 = s1(1:2:end,1:2:end,:);
+s3 = s2(1:2:end,1:2:end,:);
+s4 = s3(1:2:end,1:2:end,:);
+s5 = s4(1:2:end,1:2:end,:);
+figure(1)
+montage({f, s1, s2, s3, s4, s5});
+
+a1 = imresize(f, 0.5);
+a2 = imresize(a1, 0.5);
+a3 = imresize(a2, 0.5);
+a4 = imresize(a3, 0.5);
+a5 = imresize(a4, 0.5);
+figure(2)
+montage({f, a1, a2, a3, a4, a5});
+
+%% Task 2
+clear all; close all;
+f = imread('../assets/salvador_grayscale.tif');
+w = imread('../assets/template2.tif');
+c = normxcorr2(w, f);
+figure(1)
+surf(c)
+shading interp
+
+[ypeak, xpeak] = find(c==max(c(:)));
+yoffSet = ypeak-size(w,1);
+xoffSet = xpeak-size(w,2);
+figure(2)
+imshow(f)
+drawrectangle(gca,'Position', ...
+    [xoffSet,yoffSet,size(w,2),size(w,1)], 'FaceAlpha',0);
+
+w = imread('../assets/templ.tif');
+c = normxcorr2(w, f);
+figure(1)
+surf(c)
+shading interp
+
+[ypeak, xpeak] = find(c==max(c(:)));
+yoffSet = ypeak-size(w,1);
+xoffSet = xpeak-size(w,2);
+figure(2)
+imshow(f2)
+drawrectangle(gca,'Position', ...
+    [xoffSet,yoffSet,size(w,2),size(w,1)], 'FaceAlpha',0);

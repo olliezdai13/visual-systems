@@ -190,6 +190,12 @@ You will find in the *_assets_* folder the image file *_'yeast_cells.tif'_*. Use
 
 > Nice and clean for connected body counting (if we ever needed to)
 
+> Using Watershed + ihmin
+<p align="center"> <img src="./Lab5-Segmentation-main/matlab/Figure_6.png" /> </p>
+
+> REALLY good result. It even caught the faint distinction between two longer bodies that are really 2 combined cells.
+
+
 ## Task 5 - Segmentation by k-means clustering
 
 In this task, you will learn to apply k-means clustering method to segment an image.  
@@ -216,6 +222,11 @@ The first three inputs R, G and B are the X, Y and Z coordinates. The fourth inp
 Note that **_scatter3( )_** expects the X, Y and Z coordinates to be 1D vectors.  Therefore the function **_reshape( )_** was used to convert the 2D image in to 1D vector.
 > You can use the mouse or trackpad to move the scatter plot to different viewing angles or to zoom into the plot itself. Try it.
 
+
+> Exploring...
+<p align="center"> <img src="./Lab5-Segmentation-main/matlab/Figure_7.png" /> </p>
+
+
 Matlab provides a built-in function **_imsegkmeans_** that perform k-means segmentation on an image.  This is not a general k-means algorithm in the sense that it expects the input to be a 2D image of grayscale intensity, or a 2D image of colour.  The format is:
 
 ```
@@ -239,6 +250,9 @@ The last line here superimposes a large black circle at each means colour values
 
 > Explore the outputs **_L_** and **_centers_** from the segmentation fucntion.  Explore different value of k.
 
+> Exploring...
+<p align="center"> <img src="./Lab5-Segmentation-main/matlab/Figure_8.png" /> </p>
+
 Finally, use the label matrix **_L_** to segment the image into the k colours:
 ```
 % display the segmented image along with the original
@@ -250,6 +264,10 @@ montage({f,J})
 The Matlab function **_labe2rgb_** turns each element in **_L_** into the segmented colour stored in **_centers_**.
 
 > Explore different value of k and comment on the results.
+
+> This is with 5 values of K. It's some good segmentation for the large blocks of color. But for the noisy texture perhaps a filter would have been nice to perform first...
+<p align="center"> <img src="./Lab5-Segmentation-main/matlab/Figure_9.png" /> </p>
+
 > Also, try segmenting the colourful image file 'assets/peppers.png'.
 
 ## Task 6 - Watershed Segmentation with Distance Transform
@@ -304,6 +322,10 @@ montage({I, g, W, g2}, 'size', [2 2]);
 title('Original Image - Binarized Image - Watershed regions - Merged dowels and segmented boundaries')
 ```
 > Explain the montage in this last step.
+
+<p align="center"> <img src="./Lab5-Segmentation-main/matlab/Figure_10.png" /> </p>
+
+> The watershed transform created regions, which we show overlapping with the thresholded original image to demonstrate that we've successfully split dowels into their own regions.
 
 ## Challenges
 

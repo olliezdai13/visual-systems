@@ -134,3 +134,98 @@ title('Original Image');
 subplot(1, 2, 2);
 imshow(binary_image);
 title(['Local Threshold (w=', num2str(w), ', a=', num2str(a), ', b=', num2str(b), ')']);
+
+%% Task 4 V2
+% Using watershed transform
+
+clear all;
+close all;
+f = imread('../assets/yeast-cells.tif');
+figure(1);
+imshow(f);
+
+% Starting by binarizing the image
+f = imcomplement(f);
+level = graythresh(f);
+BW = imbinarize(f, level);
+
+figure(2);
+montage({f, BW});
+
+% Distance transform
+D = -bwdist(BW);
+Di = imhmin(D, 2);
+figure(3);
+imshow(D,[])
+title('Distance Transform of Binary Image')
+figure(4);
+imshow(Di,[])
+title('Distance Transform of Binary Image (imin)')
+
+% Watershed
+figure(5);
+L = watershed(Di);
+L(BW) = 0;
+
+% Display results
+rgb = label2rgb(L,'jet',[.5 .5 .5]);
+imshow(rgb)
+title('Watershed Transform')
+
+%% Task 5
+
+clear all; close all;
+f = imread('../assets/baboon.png');    % read image
+[M N S] = size(f);                  % find image size
+F = reshape(f, [M*N S]);            % resize as 1D array of 3 colours
+% Separate the three colour channels 
+R = F(:,1); G = F(:,2); B = F(:,3);
+C = double(F)/255;          % convert to double data type for plotting
+figure(1)
+scatter3(R, G, B, 1, C);    % scatter plot each pixel as colour dot
+xlabel('RED', 'FontSize', 14);
+ylabel('GREEN', 'FontSize', 14);
+zlabel('BLUE', 'FontSize', 14);
+
+% perform k-means clustering
+k = 5;
+[L,centers]=imsegkmeans(f,k);
+% plot the means on the scatter plot
+hold
+scatter3(centers(:,1),centers(:,2),centers(:,3),100,'black','fill');
+
+% display the segmented image along with the original
+J = label2rgb(L,im2double(centers));
+figure(2)
+montage({f,J})
+
+%% Task 6
+
+% Watershed segmentation with Distance Transform
+clear all; close all;
+I = imread('../assets/dowels.tif');
+f = im2bw(I, graythresh(I));
+g = bwmorph(f, "close", 1);
+g = bwmorph(g, "open", 1);
+montage({I,g});
+title('Original & binarized cleaned image')
+
+% calculate the distance transform image
+gc = imcomplement(g);
+D = bwdist(gc);
+figure(2)
+imshow(D,[min(D(:)) max(D(:))])
+title('Distance Transform')
+
+% perform watershed on the complement of the distance transform image
+L = watershed(imcomplement(D));
+figure(3)
+imshow(L, [0 max(L(:))])
+title('Watershed Segemented Label')
+
+% Merge everything to show segmentation
+W = (L==0);
+g2 = g | W;
+figure(4)
+montage({I, g, W, g2}, 'size', [2 2]);
+title('Original Image - Binarized Image - Watershed regions - Merged dowels and segmented boundaries')
